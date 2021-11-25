@@ -3,11 +3,11 @@
   <PropertyGroup>
     <PackageType>Template</PackageType>
     <PackageVersion>1.0</PackageVersion>
-    <PackageId>Purplebricks.BasicTemplates</PackageId>
-    <Title>Purplebricks Standardised .netcore Templates</Title>
+    <PackageId>BasicTemplates</PackageId>
+    <Title>Standardised .netcore Templates</Title>
     <Authors>Josh Dadak</Authors>
     <Description>Our standardised way to create a new applications.</Description>
-    <PackageTags>dotnet-new;templates;purplebricks</PackageTags>
+    <PackageTags>dotnet-new;templates</PackageTags>
 
     <TargetFramework>netstandard2.0</TargetFramework>
 
@@ -19,18 +19,6 @@
   <ItemGroup>
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
     <Compile Remove="**\*" />
-    <Compile Remove="templates\pbapi\.vs\**" />
-    <Compile Remove="templates\pbsub\.vs\**" />
-    <Content Remove="templates\pbapi\.vs\**" />
-    <Content Remove="templates\pbsub\.vs\**" />
-    <Content Remove="templates\pbfunc\.vs\**" />
-    <Content Remove="templates\pbfunc\.vs\**" />
-    <EmbeddedResource Remove="templates\pbapi\.vs\**" />
-    <EmbeddedResource Remove="templates\pbsub\.vs\**" />
-    <EmbeddedResource Remove="templates\pbfunc\.vs\**" />
-    <None Remove="templates\pbapi\.vs\**" />
-    <None Remove="templates\pbsub\.vs\**" />
-    <None Remove="templates\pbfunc\.vs\**" />
   </ItemGroup>
 
   <ItemGroup>
