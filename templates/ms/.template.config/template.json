@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Josh Dadak",
+  "classifications": ["Code", "Microservice"],
+  "identity": "Microservice",
+  "name": "Opinionated .NET Core Microservice template",
+  "shortName": "ms",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "MyProject", // This will replace the string 'MyProject' with the value provided via -n.
+  "preferNameDirectory": true
+}

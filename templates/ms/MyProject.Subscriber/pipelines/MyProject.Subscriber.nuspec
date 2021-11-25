@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>Subscriber</id>
+		<title>Subscriber</title>
+		<version>0.0.0</version>
+		<authors>Josh Dadak</authors>
+		<description>This is an example description</description>
+	</metadata>
+	<files>
+		<file src="src\Subscriber\bin\Release\netcoreapp3.1\publish\**" target="site\app_data\jobs\continuous\Subscriber" />
+	</files>
+</package>

@@ -1,0 +1,53 @@
+trigger: none
+
+queue:
+  name: Hosted VS2017
+  demands: 
+    - Cmd
+    - azureps
+
+steps:
+
+- task: SonarCloudPrepare@1
+  displayName: 'SonarCloud configuration'
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'myorganisation'
+    scannerMode: 'MSBuild'
+    projectKey: 'azure-application-name'
+    extraProperties: |
+      sonar.exclusions=**/obj/**,**/*.dll
+      sonar.cs.opencover.reportsPaths=${Agent.TempDirectory}/**/opencoverCoverage.xml
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    verbosityRestore: Normal
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    arguments: '--configuration Release --no-restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: test
+    projects: '**/*Test.csproj'
+    arguments: '--configuration Release --no-build --collect "Code Coverage"'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFormat: XUnit
+    mergeTestResults: true
+    condition: succeededOrFailed()
+
+- task: SonarCloudAnalyze@1
+  displayName: 'Run Code Analysis'
+
+- task: SonarCloudPublish@1
+  displayName: 'Publish Quality Gate Result'
+  inputs:
+    pollingTimeoutSec: '300'

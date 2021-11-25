@@ -1,0 +1,26 @@
+name: $(rev:r)
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: DevOps\pipeline-templates
+
+trigger:
+  branches:
+    include:
+    - master
+    - test/*
+    exclude:
+    - feature/*
+    
+variables:
+  applicationName: 'azure-application-name'
+
+stages:
+- template: Application/dotnet/stages/build-deploy-api.yml@templates
+  parameters:
+    applicationName: $(applicationName)
+    buildJobs:
+      - template: /Application/dotnet/jobs/build-dotnet.yml@templates
+        parameters:
+          applicationName: $(applicationName)
