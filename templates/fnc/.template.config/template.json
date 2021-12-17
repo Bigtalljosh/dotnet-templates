@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Josh Dadak",
+  "classifications": ["Code", "Function"],
+  "identity": "Function",
+  "name": "Opinionated .NET Function Template",
+  "shortName": "fnc",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "MyFunction", // This will replace the string 'MyFunction' with the value provided via -n.
+  "preferNameDirectory": true
+}
